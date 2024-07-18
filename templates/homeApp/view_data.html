@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+Home | Fraud Detection System
+{% endblock %}
+
+{% block css %}
+<link href="{% static 'assets/css/teststyle.css' %}" rel="stylesheet">
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main id="main">
+    <!-- ======= Hero Section ======= -->
+    <section id="homesection" style="padding: 0px 0px;"></section>
+    <!--__________________________________ header-box______________________________________________ -->
+    <div id="header-container">
+        <h1 id="header2">VIEW DATA</h1>
+    </div>
+    <div class="container" style="width: 90%;margin-top: 13px;">
+        <table id="example"
+            class="table table-striped table-bordered dt-responsive nowrap table-wrapper-scroll-y my-custom-scrollbar"
+            style="width:100%;">
+        </table>
+    </div>
+    </section><!-- End Hero -->
+</main>
+
+<script>
+    $(document).ready(function () {
+        var columns = [
+            { title: "Sr No." },
+            // Add other hardcoded columns if any.
+            //...
+        ];
+
+        // Assuming you have 'columns' from the Django context
+        {% for col in columns %}
+        columns.push({ title: "{{ col }}" });
+        {% endfor %}
+
+        $('#example').DataTable({
+            serverSide: true,
+            ajax: {
+                url: "{% url 'retrieve_data_by_id' id %}",  // Adjust this if necessary
+                type: 'GET'
+            },
+            columns: columns,
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'copy',
+                    text: 'Copy'
+                },
+                {
+                    extend: 'excel',
+                    text: 'Download excel'
+                },
+            ],
+            initComplete: function () {
+                var btns = $('.dt-button');
+                btns.addClass('btn btn-primary btn-sm');
+                btns.removeClass('dt-button');
+            },
+            pageLength: 100,
+            lengthMenu: [[100, 250, 500, 1000], [100, 250, 500, 1000]]
+        });
+    });
+</script>
+{% endblock %}

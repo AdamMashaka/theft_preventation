@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+About | Theft Preventation
+{% endblock %}
+
+{% block content %}
+<main id="main">
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    <h1>Theft Preventation System</h1>
+                    <h2>We are a team of experts dedicated to providing the best in fraud detection services.</h2>
+                    <div><a href="#about" class="btn-get-started scrollto">Learn More</a></div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                    <img src="{% static 'img/hero-img.png' %}" class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row content">
+                <div class="col-lg-6">
+                    <h2>About Our THeft Preventation System</h2>
+                    <h3>We use advanced machine learning algorithms and data analysis techniques to detect fraudulent activities.</h3>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <p>
+                        Our system is designed to provide real-time alerts and detailed reports on potential fraudulent activities. We aim to protect businesses and individuals from financial losses due to fraud.
+                    </p>
+                    <a href="#" class="btn-learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section><!-- End About Section -->
+</main>
+{% endblock %}
